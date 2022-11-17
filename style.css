@@ -1,6 +1,95 @@
-.book {
-    height: 300px;
-    width: 250px;
-    border: 5px solid black;
-    font-size: 25px;
+:root {
+    --graident-orange: linear-gradient(228deg, rgba(247,132,0,1) 30%, rgba(255,170,57,0.8995973389355743) 60%);
 }
+
+* {
+    margin:0;
+    border:0;
+}
+.content {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1.3fr 10fr;
+}
+header {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    font-weight: 20px;
+    text-shadow: 0 0 3px black;
+    box-shadow: 0 0 3px 1px black;
+    background: rgb(247,132,0);
+    background: var(--graident-orange);
+}
+main {
+    display: grid;
+    width: 100vw;
+    grid-template-columns: 1.3fr 6fr;
+}
+    main > .left {
+        display: flex;
+        flex-flow: column;
+    }
+        .left > button {
+            margin-left: 40%;
+            margin-top: 4vh;
+            width: 13rem;
+            height: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 0 3px 1px black;
+            font-size: 1.6rem;
+            font-weight: bold;
+            text-shadow: 0 0 3px 1px black;
+        }
+        .left > button:hover {
+            transform: scale(1.2);
+        }
+        .left > input:nth-child(-n+3) {
+            font-size: 2rem;
+            box-shadow: 0 0 3px 1px black;
+            border-radius: 10px;
+            margin-top: 2rem;
+            margin-left: 2rem;
+            padding: 5px;
+            padding-left: 10px;
+        }
+        .left > h1 > input {
+            margin-left: 2rem;
+        }
+        .left > h1 {
+            padding-left: 2rem;
+            padding-top:2rem;
+        }
+        .right {
+            display: grid;
+            grid-template-columns: 1fr 10fr 1fr;
+            grid-template-rows: .5fr 10fr 1fr;
+
+        }
+        .library {
+            grid-column: 2;
+            grid-row: 2;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap:1rem;
+        }
+    main > button {
+        width: 300px;
+        height: 30px;
+    }
+
+    .book {
+        height: 300px;
+        width: 250px;
+        box-shadow: 0 0 8px 3px black;
+        border-radius: 25px;
+        font-size: 25px;
+    }
+    .book > div {
+        padding-top:1rem;
+        padding-left:1rem;
+        padding-right:1rem;
+    }

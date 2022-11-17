@@ -8,14 +8,27 @@
   <title>Document</title>
 </head>
 <body>
-  add new book <br>
-  Book Name: <input id = 'newBookName'type="text"><br>
-  Author: <input id="newBookAuthor" type="text"><br>
-  pages: <input type="text" id="pages"><br>
-  read? <input type="checkbox" id="isRead" value='false'><br>
-  <button id="submit">submit</button>
-  <div id="libraryContainer">
+  <div class="content">
+    <header>
+      Library
+    </header>
+    <main>
+      <div class="left">
+        <input type="text" placeholder="Book Name" id="newBookName">
+        <input type="text" placeholder="author" id="newBookAuthor">
+        <input type="number" placeholder="# of Pages" id="pages">
+        <h1>Read?<input type="checkbox" id="isRead" value="false"></h1>
+        <button type="submit" id="submit">
+          + Add book
+        </button>
+      </div>
+      <div class="right">
+        <div class="library" id="libraryContainer">
 
+        </div>
+      </div>
+
+    </main>
   </div>
 </body>
   <script src="java.js"></script>
