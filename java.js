@@ -6,27 +6,31 @@ let pages = document.getElementById('pages')
 let isRead = document.getElementById('isRead')
 const submitButton = document.getElementById('submit');
 
-submitButton.addEventListener('click', () => addBookToLibrary())
+submitButton.addEventListener('click', () => addBook())
 
 isRead.addEventListener('click', () => isRead.value = 'true')
 
-function Book(title, author, pages, isRead) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = isRead;
-}
-
-function addBookToLibrary(){
-    const newBook = new Book(title.value, author.value, pages.value, isRead.value)
-    myLibrary.push(newBook)
-    for (let i=0; i<myLibrary.length; i++){
-        createBook(myLibrary[i]);
+class Book {
+    constructor(title, author, pages, isRead) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.isRead = isRead;
     }
+    addBookToLibrary() {
+        myLibrary.push(this)
+        for (let i=0; i<myLibrary.length; i++){
+            createBook(myLibrary[i]);
+        }
+    }
+};
+
+const addBook = () => {
+    let newBook = new Book(title.value, author.value, pages.value, isRead.value);
+    newBook.addBookToLibrary();
 }
 
-function createBook(item){
-    console.log('heyo')
+const createBook = (item) => {
     const libraryContainer = document.getElementById('libraryContainer');
     const bookDiv = document.createElement('div');
     const titleDiv = document.createElement('div');
@@ -54,5 +58,4 @@ function createBook(item){
     bookDiv.appendChild(readDiv);
     
     libraryContainer.append(bookDiv)
-    myLibrary = [];
 }
