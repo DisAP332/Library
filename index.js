@@ -20,29 +20,36 @@ var Book = /** @class */ (function () {
     return Book;
 }());
 addBook.addEventListener("click", function () {
+    // create book object
     var data = {
         title: title.value,
         author: author.value,
         pages: pages.value,
         read: read.checked
     };
+    // attempt to add book to library and preform checks
     addBookToLibrary(data);
 });
 function addBookToLibrary(data) {
+    // check if all fields are filled
     if (data.title === "" || data.author === "" || data.pages === "") {
         alert("Please fill out all fields");
         return;
     }
+    // ensure maximum book amounts
     if (books > 20) {
         alert("You have reached the maximum number of books");
         return;
     }
+    // check if book already exists
     if (Library.get(data.title)) {
         alert("Book already exists");
         return;
     }
+    // add book to library
     var book = new Book(data.title, data.author, data.pages, data.read);
     Library.set(data.title, book);
+    // create book card
     createBookCard(book);
 }
 function deleteBook(title) {
@@ -62,6 +69,7 @@ function createBookCard(book) {
     pages.textContent = "Pages: ".concat(book.pages);
     var read = document.createElement("p");
     read.textContent = "Read: ".concat(book.read);
+    // add remove button
     var remove = document.createElement("button");
     remove.textContent = "Remove";
     remove.addEventListener("click", function () {
@@ -74,4 +82,24 @@ function createBookCard(book) {
     bookCard === null || bookCard === void 0 ? void 0 : bookCard.appendChild(pages);
     bookCard === null || bookCard === void 0 ? void 0 : bookCard.appendChild(read);
     bookCard === null || bookCard === void 0 ? void 0 : bookCard.appendChild(remove);
+}
+// slide out add book form
+var left = document.querySelector(".left");
+var addToLibrary = document.getElementById("add_to_library_toggler");
+left.classList.add("hide");
+addToLibrary === null || addToLibrary === void 0 ? void 0 : addToLibrary.addEventListener("click", toggleMenu);
+function toggleMenu() {
+    var hidden = true;
+    function showMenu() {
+        console.log("hide");
+        left.classList.remove("show");
+        left.classList.add("hide");
+        hidden = false;
+    }
+    function hideMenu() {
+        left.classList.remove("hide");
+        left.classList.add("show");
+        hidden = true;
+    }
+    hidden === true ? showMenu() : hideMenu();
 }

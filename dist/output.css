@@ -534,14 +534,18 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 header {
   position: fixed;
   top: 0;
   width: 100vw;
   height: 10vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
   --tw-bg-opacity: 1;
   background-color: rgb(249 115 22 / var(--tw-bg-opacity));
   --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
@@ -549,33 +553,33 @@ header {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-header > h1 {
+header > div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header > div > h1 {
   font-size: 2.25rem;
   line-height: 2.5rem;
 }
 
-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100vw;
-  height: 5vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+#add_to_library_toggler {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
   --tw-bg-opacity: 1;
-  background-color: rgb(249 115 22 / var(--tw-bg-opacity));
-  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  background-color: rgb(194 65 12 / var(--tw-bg-opacity));
 }
 
 body {
   margin-top: 10vh;
-  height: 85vh;
+  height: 90vh;
   display: flex;
 }
 
-@layer body {
+@layer menu_left {
   .left {
     --tw-bg-opacity: 1;
     background-color: rgb(100 116 139 / var(--tw-bg-opacity));
@@ -584,6 +588,7 @@ body {
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
     width: 25vw;
     height: 100%;
+    transition: 0.5s ease-in-out;
   }
 
   .left > div:nth-child(1) {
@@ -605,21 +610,23 @@ body {
     font-size: 1.5rem;
     line-height: 2rem;
   }
+}
 
+@layer right {
   .right {
     --tw-bg-opacity: 1;
     background-color: rgb(241 245 249 / var(--tw-bg-opacity));
-    width: 75vw;
+    width: 100%;
     height: 100%;
   }
 
   .library {
     height: 100%;
-    margin: 30px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     overflow: hidden;
+    padding: 20px !important;
   }
 
   .book-card {
@@ -629,7 +636,8 @@ body {
     height: 80%;
     justify-content: center;
     margin-bottom: 10px;
-    border: 3px solid black !important;
+    padding: 10px !important;
+    border: 2px solid black !important;
     --tw-bg-opacity: 1 !important;
     background-color: rgb(241 245 249 / var(--tw-bg-opacity)) !important;
     --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1) !important;
@@ -647,4 +655,16 @@ body {
   .book-card > p {
     padding-left: 10px;
   }
+}
+
+/* begin utility classes */
+
+.hide {
+  display: none !important;
+  transition: 0.5s ease-in-out;
+}
+
+.show {
+  display: block !important;
+  transition: 0.5s ease-in-out;
 }
