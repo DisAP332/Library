@@ -33,6 +33,10 @@ class Book implements IBook {
     this.pages = pages;
     this.read = read; // true or false
   }
+
+  readOrNot() {
+    return this.read ? false : true;
+  }
 }
 
 addBook.addEventListener("click", () => {
@@ -75,7 +79,7 @@ function deleteBook(title: string) {
   library.removeChild(document.getElementById(title));
 }
 
-function createBookCard(book: IBook) {
+function createBookCard(book: Book) {
   const bookCard = document.createElement("div");
   bookCard.classList.add("book-card");
   bookCard.setAttribute("id", book.title);
@@ -83,7 +87,11 @@ function createBookCard(book: IBook) {
   // add content to book card
 
   const title = document.createElement("h3");
-  title.textContent = `Title: ${book.title}`;
+  if (book.title.length > 20) {
+    title.textContent = `Title: ${book.title.slice(0, 18)}...`;
+  } else {
+    title.textContent = `Title: ${book.title}`;
+  }
 
   const author = document.createElement("p");
   author.textContent = `Author: ${book.author}`;
@@ -93,6 +101,10 @@ function createBookCard(book: IBook) {
 
   const read = document.createElement("p");
   read.textContent = `Read: ${book.read}`;
+  read.addEventListener("click", () => {
+    book.read = book.readOrNot();
+    read.textContent = `Read: ${book.read}`;
+  });
 
   // add remove button
 
@@ -114,8 +126,10 @@ function createBookCard(book: IBook) {
 // slide out add book form
 
 const left = document.querySelector(".left");
+const right = document.querySelector(".right");
 const addToLibrary = document.getElementById("add_to_library_toggler");
 left.classList.add("hide");
+right.classList.add("max-100");
 addToLibrary?.addEventListener("click", toggleMenu);
 
 let hidden = true;
@@ -124,11 +138,15 @@ function toggleMenu() {
   function showMenu() {
     left.classList.remove("hide");
     left.classList.add("show");
+    right.classList.remove("max-100");
+    right.classList.add("max-75");
     hidden = false;
   }
   function hideMenu() {
     left.classList.remove("show");
     left.classList.add("hide");
+    right.classList.remove("max-75");
+    right.classList.add("max-100");
     hidden = true;
   }
   hidden === true ? showMenu() : hideMenu();

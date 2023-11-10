@@ -31,3 +31,4 @@ Make sure to say that the elements your grabbing are inputs by saying HTMLInputE
 - uses hashmap to store data
 - deletion and addition of data in Library
 - uses hashmap in order to prevent duplicate books
+- added read or not method to change read status
