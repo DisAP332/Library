@@ -668,6 +668,9 @@ body {
 
   .book-card > p:nth-child(4) {
     cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+            user-select: none;
   }
 }
 

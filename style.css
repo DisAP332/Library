@@ -109,6 +109,7 @@ body {
   }
   .book-card > p:nth-child(4) {
     cursor: pointer;
+    user-select: none;
   }
 }
 
