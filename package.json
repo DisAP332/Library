@@ -1,0 +1,13 @@
+{
+  "name": "library",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^20.9.0",
+    "bun-types": "latest",
+    "tailwindcss": "^3.3.5"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

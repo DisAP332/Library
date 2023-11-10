@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <link rel="stylesheet" href="style.css">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <div class="content">
-    <header>
-      Library
-    </header>
-    <main>
-      <div class="left">
-        <input type="text" placeholder="Book Name" id="newBookName">
-        <input type="text" placeholder="author" id="newBookAuthor">
-        <input type="number" placeholder="# of Pages" id="pages">
-        <h1>Read?<input type="checkbox" id="isRead" value="false"></h1>
-        <button type="submit" id="submit">
-          + Add book
-        </button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link type="text/css" rel="stylesheet" href="./dist/output.css" />
+  </head>
+  <header>
+    <h1>Library</h1>
+  </header>
+  <body>
+    <div class="left">
+      <div>
+        <h1>Add Book</h1>
       </div>
-      <div class="right">
-        <div class="library" id="libraryContainer">
-
+      <div>
+        <input id="title" type="text" placeholder="Title" />
+        <input id="author" type="text" placeholder="Author" />
+        <input id="pages" type="number" placeholder="Pages" />
+        <div style="display: flex">
+          <label for="read">Read?</label>
+          <input id="read" type="checkbox" />
         </div>
+        <button id="addBook">Add Book</button>
       </div>
-
-    </main>
-  </div>
-</body>
-  <script src="java.js"></script>
+    </div>
+    <div class="right">
+      <div class="library"></div>
+    </div>
+  </body>
+  <footer>
+    <h1>Jordan Bell WebDev</h1>
+  </footer>
+  <script src="./index.js" type="module"></script>
 </html>
