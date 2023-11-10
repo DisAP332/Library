@@ -118,17 +118,17 @@ const addToLibrary = document.getElementById("add_to_library_toggler");
 left.classList.add("hide");
 addToLibrary?.addEventListener("click", toggleMenu);
 
+let hidden = true;
+
 function toggleMenu() {
-  let hidden = true;
   function showMenu() {
-    console.log("hide");
-    left.classList.remove("show");
-    left.classList.add("hide");
+    left.classList.remove("hide");
+    left.classList.add("show");
     hidden = false;
   }
   function hideMenu() {
-    left.classList.remove("hide");
-    left.classList.add("show");
+    left.classList.remove("show");
+    left.classList.add("hide");
     hidden = true;
   }
   hidden === true ? showMenu() : hideMenu();
